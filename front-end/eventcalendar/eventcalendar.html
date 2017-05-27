@@ -1,0 +1,72 @@
+<div data-sly-use.calendar="eventcalendar.js"
+ data-sly-use.model="org.fhcrc.centernet.components.EventsCalendar"
+ data-sly-use.clientlib="${'/libs/granite/sightly/templates/clientlib.html'}"
+ class="${calendar.CONST.WRAPPER_CSS_CLASS}">
+ 
+ <div class="event-filters-container">
+  <div>
+   <input id="event-date-range">
+   <div class="select-element">
+     <select id="event-filter-category">
+      <option disabled selected hidden value="all">Event Type</option>
+      <option value="all">All</option>
+      <sly data-sly-list="${model.categories}" data-sly-unwrap>
+       <option value="${item.name}">${item.title}</option>
+      </sly>
+     </select>
+   </div>
+   <div class="select-element">
+     <select id="event-filter-department">
+      <option disabled selected hidden value="all">Host</option>
+      <option value="all">All</option>
+      <sly data-sly-list="${model.departments}" data-sly-unwrap>
+       <option value="${item.name}">${item.title}</option>
+      </sly>
+     </select>
+   </div>
+  </div>
+ </div>
+ 
+ <table>
+  
+  <thead>
+   
+   <tr>
+   
+    <th class="show-for-medium" scope="col">Date &amp; Time</th>
+    <th scope="col">Event<span class="hide-for-medium">s</span></th>
+    <th class="show-for-medium" scope="col">Location</th>
+    <th class="show-for-medium" scope="col">Host</th>
+    <th class="show-for-medium" scope="col">Contact</th>
+
+   </tr>
+   
+  </thead>
+  
+  <tbody data-sly-list="${model.itemList}">
+   
+   <tr data-event-time="${item.unixtime}"
+    data-event-start-date="${item.startDate}"
+    data-event-categories="${item.categories}"
+    data-event-departments="${item.departmentsData}"
+    data-event-external="${item.isExternal}">
+    
+    <td class="event-date-container"><sly data-sly-test="${item.time}" data-sly-unwrap>${item.time @ context='html'}</sly><p data-sly-use.linkHelper="${'org.fhcrc.centernet.helper.LinkHelper' @ link=item.path}"><a href="${linkHelper.getICSLink}" class="sprites ical">ical</a></p></td>
+    
+    <td class="event-details-container"><a data-sly-use.pathHelper="${'org.fhcrc.centernet.helper.LinkHelper' @ link=item.path}" href="${pathHelper.formattedLink}" class="event-title">${item.title}</a><br><span data-sly-test="${item.speaker}" class="event-speaker">Speaker/Presenter: ${item.speaker}<br></span><span data-sly-test="${item.summary}" class="event-summary">${item.summary}</span></td>
+    
+    <td class="event-location-container"><sly data-sly-test="${item.location}" data-sly-unwrap><span class="facet-label hide-for-medium">Location:<br></span><span class="event-location">${item.location}<br></span><a data-sly-test="${item.locationMap}" class="event-location-map" href="${item.locationMap}" target="_blank">${calendar.CONST.MAP_TEXT}</a></sly></td>
+    
+    <td class="event-host-container"><sly data-sly-test="${item.host}" data-sly-unwrap><span class="facet-label hide-for-medium">Host:<br></span><span class="event-host">${item.host}</span></sly></td>
+    
+    <td class="event-contact-container"><sly data-sly-unwrap data-sly-test="${item.contact}" class="event-contact"><span class="facet-label hide-for-medium">Contact:<br></span>${item.contact @ context='html'}</sly></td>
+    
+   </tr>
+   
+  </tbody>
+  
+ </table>
+
+ <js data-sly-call="${clientlib.js @ categories='apps.centernet.components.eventscalendar'}"
+  data-sly-unwrap></js>
+</div>

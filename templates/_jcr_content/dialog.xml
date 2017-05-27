@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+ jcr:primaryType="cq:Dialog"
+ activeTab="0"
+ xtype="tabpanel">
+ <items jcr:primaryType="cq:WidgetCollection">
+  <tab1
+   jcr:primaryType="cq:Panel"
+   title="Event details">
+   <items jcr:primaryType="cq:WidgetCollection">
+    <title
+     jcr:primaryType="cq:Widget"
+     allowBlank="{Boolean}false"
+     fieldLabel="Event title"
+     name="./jcr:content/jcr:title"/>
+    <summary
+     jcr:primaryType="cq:Widget"
+     fieldLabel="Event summary"
+     fieldDescription="Appears on the calendar and digital signs, but not on the event detail page"
+     name="./jcr:content/jcr:description"/>
+    <desc
+     jcr:primaryType="cq:Widget"
+     fieldDescription="Appears on the event detail page, but not on the calendar"
+     fieldLabel="Event description"
+     name="./jcr:content/eventdetails/text"
+     xtype="richtext">
+     <rtePlugins jcr:primaryType="nt:unstructured">
+      <table
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <format
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <lists
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <justify
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <edit
+       jcr:primaryType="nt:unstructured"
+       features="[paste-wordhtml]"/>
+      <findreplace
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <paraformat
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <subsuperscript
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <misctools
+       jcr:primaryType="nt:unstructured"
+       features="[specialchars]"/>
+      <links
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <spellcheck
+       jcr:primaryType="nt:unstructured"
+       features="*"
+       invalidStyle="background-color: #ffdddd;"/>
+      <undo
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+      <image
+       jcr:primaryType="nt:unstructured"
+       features="*"/>
+     </rtePlugins> 
+     <specialCharsConfig jcr:primaryType="nt:unstructured">
+      <chars jcr:primaryType="nt:unstructured">
+       <copyright
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;copy;"/>
+       <reg
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;reg;"/>
+       <trademark
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;trade;"/>
+       <emdash
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;mdash;"/>
+       <ellipsis
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;hellip;"/>
+       <Aacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Aacute;"/>
+       <aacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;aacute;"/>
+       <Aring
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Aring;"/>
+       <Eacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Eacute;"/>
+       <eacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;eacute;"/>
+       <Iacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Iacute;"/>
+       <iacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;iacute;"/>
+       <Oacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Oacute;"/>
+       <oacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;oacute;"/>
+       <Ouml
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Ouml;"/>
+       <ouml
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;ouml;"/>
+       <Uacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Uacute;"/>
+       <uacute
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;uacute;"/>
+       <Uuml
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Uuml;"/>
+       <uuml
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;uuml;"/>
+       <Ccedil
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Ccedil;"/>
+       <ccedil
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;ccedil;"/>
+       <Ntilde
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;Ntilde;"/>
+       <ntilde
+        jcr:primaryType="nt:unstructured"
+        entity="&amp;ntilde;"/>
+       <greekchars
+        jcr:primaryType="nt:unstructured"
+        rangeEnd="{Long}969"
+        rangeStart="{Long}945"/>
+       <greekcharscaps
+        jcr:primaryType="nt:unstructured"
+        rangeEnd="{Long}937"
+        rangeStart="{Long}915"/>
+      </chars>
+     </specialCharsConfig>
+    </desc>
+    <speaker
+     jcr:primaryType="cq:Widget"
+     fieldDescription=""
+     fieldLabel="Speaker/presenter"
+     name="./jcr:content/eventdetails/speaker"
+     xtype="textarea"/>
+    <internal
+     jcr:primaryType="cq:Widget"
+     name="./jcr:content/eventdetails/isExternal"
+     inputValue="false"
+     boxLabel="This speaker is from Fred Hutch"
+     xtype="radio"/>
+    <external
+     jcr:primaryType="cq:Widget"
+     name="./jcr:content/eventdetails/isExternal"
+     inputValue="true"
+     boxLabel="This speaker is from an outside institution"
+     xtype="radio"/>
+    <host
+     jcr:primaryType="cq:Widget"
+     fieldLabel="Host/sponsor"
+     name="./jcr:content/eventdetails/host"
+     xtype="textfield"/>
+    <location
+     jcr:primaryType="cq:Widget"
+     fieldDescription=""
+     fieldLabel="Location"
+     name="./jcr:content/eventdetails/location"
+     xtype="textfield"/>
+    <locationMap
+     jcr:primaryType="cq:Widget"
+     fieldDescription="PDF of map showing the conference room your event is being held in"
+     fieldLabel="Location map"
+     name="./jcr:content/eventdetails/locationMap"
+     rootPath="/content/dam/centernet/util/conference-room-maps"
+     xtype="pathfield"/>
+    <contactInfo
+     jcr:primaryType="cq:Widget"
+     xtype="dialogfieldset"
+     title="Contact Information"
+     collapsed="{Boolean}false"
+     collapsible="{Boolean}false">
+     <items jcr:primaryType="cq:WidgetCollection">
+      <contactName 
+       jcr:primaryType="cq:Widget"
+       fieldDescription="Who should be contacted if there are questions about this event?"
+       fieldLabel="Event contact name"
+       name="./jcr:content/eventdetails/contactName"
+       xtype="textfield"/>
+      <contactEmail 
+       jcr:primaryType="cq:Widget"
+       fieldDescription="Email address for the event contact"
+       fieldLabel="Event contact email"
+       name="./jcr:content/eventdetails/contactEmail"
+       xtype="textfield"/>
+      <contactPhone 
+       jcr:primaryType="cq:Widget"
+       fieldDescription="10-digit phone number for the event contact. Use no separators."
+       fieldLabel="Event contact phone"
+       maxLength="10"
+       name="./jcr:content/eventdetails/contactPhone"
+       xtype="numberfield"/>
+     </items>
+    </contactInfo>
+    <richFlag
+     jcr:primaryType="cq:Widget"
+     ignoreData="{Boolean}true"
+     name="./jcr:content/eventdetails/textIsRich"
+     value="true"
+     xtype="hidden"/>
+    <category
+     jcr:primaryType="cq:Widget"
+     cls="cq-propsdialog-tags"
+     fieldDescription="Select the event category"
+     fieldLabel="Event category"
+     name="./jcr:content/cq:tags"
+     namespaces="[web-event-categories]"
+     xtype="tags"/>
+    <department
+     jcr:primaryType="cq:Widget"
+     cls="cq-propsdialog-tags"
+     fieldDescription="Select the associated Fred Hutch business unit"
+     fieldLabel="Associated business unit"
+     name="./jcr:content/cq:tags"
+     namespaces="[web-depts]"
+     xtype="tags"/>
+   </items>
+  </tab1>
+  <tab2
+   jcr:primaryType="cq:Panel"
+   title="Event date/time">
+   <items jcr:primaryType="cq:WidgetCollection">
+    <ontime
+     jcr:primaryType="cq:Widget"
+     allowBlank="{Boolean}false"
+     ctCls="cq-propsdialog-ontime"
+     fieldLabel="Start date/time"
+     name="./jcr:content/eventdetails/start"
+     xtype="datetime">
+	<listeners
+		jcr:primaryType="nt:unstructured"
+		loadcontent="function() { if(jstz.determine().name() != &quot;America/Los_Angeles&quot;) { alert('We’ve detected that you are in a different time zone than Seattle. The time and date fields on this page (Start date/time &amp; End date/time) reflect your current local time zone, not Seattle’s.'); }}"/>						
+	</ontime>
+    <offtime
+     jcr:primaryType="cq:Widget"
+     allowBlank="{Boolean}false"
+     ctCls="cq-propsdialog-offtime"
+     fieldLabel="End date/time"
+     name="./jcr:content/eventdetails/end"
+     xtype="datetime"/>
+    <onTimeHint
+     jcr:primaryType="cq:Widget"
+     ignoreData="true"
+     name="./jcr:content/eventdetails/start@TypeHint"
+     value="Date"
+     xtype="hidden"/>
+    <offTimeHint
+     jcr:primaryType="cq:Widget"
+     ignoreData="true"
+     name="./jcr:content/eventdetails/end@TypeHint"
+     value="Date"
+     xtype="hidden"/>
+   </items>
+  </tab2>
+  <tab3
+   jcr:primaryType="cq:Panel"
+   title="Additional Information">
+   <items jcr:primaryType="cq:WidgetCollection">
+    <attachment
+     jcr:primaryType="cq:Widget"
+     autoUploadDelay="1"
+     ddGroups="[media]"
+     fieldLabel="Event attachment"
+     fileNameParameter="./jcr:content/eventdetails/attachment/fileName"
+     fileReferenceParameter="./jcr:content/eventdetails/attachment/fileReference"
+     name="./jcr:content/eventdetails/attachment/file"
+     mimeTypes="*.jpg;*.jpeg;*.pdf;*.xsl;*.xslx;*.doc;*.docx;*.txt;*.ppt;*.pptx;*.png;*.gif;"
+     xtype="html5smartfile"/>
+    <attachmentTitle
+     jcr:primaryType="cq:Widget"
+     fieldDescription=""
+     fieldLabel="Attachment link text"
+     name="./jcr:content/eventdetails/attachmentTitle"
+     xtype="textfield"/> 
+    <buttonURL
+     jcr:primaryType="cq:Widget"
+     fieldDescription="URL of page containing additional information about your event"
+     fieldLabel="Additional info URL"
+     name="./jcr:content/eventdetails/button/linkUrl"
+     xtype="pathfield"/>
+    <buttonText
+     jcr:primaryType="cq:Widget"
+     fieldLabel="Additional info button text"
+     fieldDescription="Text of button that links to the above URL"
+     name="./jcr:content/eventdetails/button/text"
+     type="select"
+     xtype="selection">
+     <options jcr:primaryType="cq:WidgetCollection">
+      <register
+       jcr:primaryType="nt:unstructured"
+       text="Register"
+       value="Register"/>
+      <website
+       jcr:primaryType="nt:unstructured"
+       text="Event Website"
+       value="Event Website"/>
+      <information
+       jcr:primaryType="nt:unstructured"
+       text="Information"
+       value="Information"/>
+     </options>
+    </buttonText>
+   </items>
+  </tab3>
+  <tab4
+   jcr:primaryType="cq:Panel"
+   title="Event Image">
+   <items jcr:primaryType="cq:WidgetCollection">
+    <image
+     jcr:primaryType="cq:Widget"
+     cropParameter="./jcr:content/image/imageCrop"
+     ddGroups="[media]"
+     fieldLabel="Image"
+     fileNameParameter="./jcr:content/image/fileName"
+     fileReferenceParameter="./jcr:content/image/fileReference"
+     height="300"
+     mapParameter="./jcr:content/image/imageMap"
+     name="./jcr:content/image/file"
+     requestSuffix=".img.png"
+     rotateParameter="./jcr:content/image/imageRotate"
+     xtype="html5smartimage"/>
+    <alt
+     jcr:primaryType="cq:Widget"
+     fieldDescription="Required. Used by assistive technology for the visually impaired."
+     fieldLabel="Alt Text"
+     name="./jcr:content/eventdetails/alt"
+     xtype="textfield"/>
+    <caption
+     jcr:primaryType="cq:Widget"
+     fieldLabel="Caption"
+     fieldDescription=""
+     name="./jcr:content/eventdetails/caption"
+     xtype="textarea"/>
+    <credit
+     jcr:primaryType="cq:Widget"
+     fieldLabel="Credit"
+     fieldDescription="(For example, 'Photo by Robert Hood / Fred Hutch News Service')"
+     name="./jcr:content/eventdetails/credit"
+     xtype="textfield"/>
+    <resType
+     jcr:primaryType="cq:Widget"
+     ignoreData="{Boolean}true"
+     name="./jcr:content/image/sling:resourceType"
+     value="common/components/content/image"
+     xtype="hidden"/>
+   </items>
+  </tab4>
+ </items>
+</jcr:root>

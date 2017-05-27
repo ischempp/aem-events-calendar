@@ -1,0 +1,123 @@
+<sly data-sly-use.details="eventdetails.js" data-sly-use.model="org.fhcrc.centernet.components.EventDetails" data-sly-unwrap>
+	<sly data-sly-use.runmode="runmode.js" data-sly-unwrap>
+	    <sly data-sly-test="${currentStyle.enableScientificSeminarsNotification || (runmode.runmodes.author && runmode.runmodes.prod)}" data-sly-unwrap>
+			<sly data-sly-use.helper="org.fhcrc.centernet.helper.ScientificSeminarsEventHelper" data-sly-unwrap>
+				<sly data-sly-test="${helper.isScientificSeminarsEvent && helper.hasWriteAccess}" data-sly-unwrap>
+					<hr>
+					<form role="form" name="notify_listserv_form" id="notify_listserv_form" method="post" action="#">
+			    		<input type="hidden" style="display:none;" id="pageURL" name="pageURL" value="${currentPage.path}"/>
+			    		<input type="hidden" style="display:none;" id="pageTitle" name="pageTitle" value="${currentPage.title}"/>
+		    			<input type="hidden" style="display:none;" id="pageDesc" name="pageDesc" value="${currentPage.description}"/>    		
+			    		<input type="hidden" style="display:none;" id="dateTime" name="dateTime" value="${model.timeString}"/>	    		
+			    		<input type="hidden" style="display:none;" id="speaker" name="speaker" value="${properties.speaker}"/>
+			    		<input type="hidden" style="display:none;" id="host" name="host" value="${properties.host}"/>
+			    		<input type="hidden" style="display:none;" id="location" name="location" value="${properties.location}"/>
+			    		<input type="hidden" style="display:none;" id="contactName" name="contactName" value="${properties.contactName}"/>
+			    		<input type="hidden" style="display:none;" id="contactEmail" name="contactEmail" value="${properties.contactEmail}"/>
+			    		<input type="hidden" style="display:none;" id="contactPhone" name="contactPhone" value="${properties.contactPhone}"/>
+			    		<input type="hidden" style="display:none;" id="contact" name="contact" value="${properties.contact}"/>
+			    		<input type="hidden" style="display:none;" id="description" name="description" value="${properties.text}"/>	
+		    			<input type="hidden" style="display:none;" id="additional_info_url" name="additional_info_url" value="${properties['button/linkUrl']}"/>
+		    			<input type="hidden" style="display:none;" id="file_ref" name="file_ref" value="${model.fileRef}"/>	
+			    		<input type="submit" class="button" value="POST TO SCIENTIFIC SEMINARS LISTSERV">
+		  			    <p>Use this button to post this event (or an update to it) to the <a href="https://lists.fhcrc.org/mailman/listinfo/seminars" target="_blank">Scientific Seminars listserv</a>, used by Fred Hutch and affiliated researchers to share science events of interest. An email with the event details will be sent to the listserv using your email as the reply-to address.</p>
+					</form>
+					<p data-alert id="notify_sucess" class="notify_success" style="display:none;">Successfully posted this event to the Scientific Seminars listserv.</p>
+					<p data-alert id="notify_error" class="notify_error" style="display:none;">Error has occurred notifying Scientific Seminars listserv. Please re-try.</p>
+			   		<hr>
+			   		<script type="text/javascript">
+				        $('#notify_listserv_form').submit(function(e) {
+				    		e.preventDefault();    
+							var mydata = $("#notify_listserv_form").serialize();
+							var myurl = "/bin/centernet/notifylistserv";
+							var datatype = 'json';
+							var type = $("#notify_listserv_form").attr('method');
+							var request = $.ajax({
+								dataType: datatype,
+								url: myurl,
+								type: type,
+								data: mydata,
+								success: function(response) {
+						    		$('#notify_listserv_form').css("display","none");
+						    		$('#notify_sucess').css("display","block");
+								},
+								error: function(response) {
+						    		$('#notify_error').css("display","block");
+								},
+								complete : function() {
+								}
+							}).always(function() {	});
+							return false; 
+				    	});
+			   		</script>   		
+				</sly>	
+			</sly>	
+		</sly>
+	</sly>
+	
+	<div class="${details.CONST.WRAPPER_CSS_CLASS}">
+    <!--/* This section mimics the image component */-->
+	  <div data-sly-test="${details.image}" 
+      class="${details.CONST.IMG_CONTAINER_CSS_CLASS}">
+      <figure>
+        <img src="${details.image.src}" alt="${properties.alt}">
+        <figcaption>
+          ${properties.caption}
+          <span class="credit">${properties.credit}</span>
+        </figcaption>
+      </figure>
+    </div>
+		<div class="${details.CONST.SECTION_CSS_CLASS}">
+			<h3>Date &amp; Time</h3>
+			<p>${model.timeString}<br>
+       <sly data-sly-use.linkHelper="${'org.fhcrc.centernet.helper.LinkHelper' @ link=currentPage.path}" data-sly-unwrap>
+        <a href="${linkHelper.getICSLink}" class="sprites ical">ical</a>
+        <a href="${linkHelper.getICSLink}">Add to your calendar</a>
+       </sly>
+			</p>
+			
+		</div>
+		<div class="${details.CONST.SECTION_CSS_CLASS}" data-sly-test="${properties.speaker}">
+			<h3>Speaker or Presenter</h3>
+			<p>${properties.speaker}</p>
+		</div>
+		<div class="${details.CONST.SECTION_CSS_CLASS}" data-sly-test="${properties.host}">
+			<h3>Host or Sponsor</h3>
+			<p>${properties.host}</p>
+		</div>
+		<div class="${details.CONST.SECTION_CSS_CLASS}" data-sly-test="${properties.location}">
+			<h3>Location</h3>
+			<p>${properties.location}
+				<a data-sly-test="${properties.locationMap}" href="${properties.locationMap}" target="_blank">${details.CONST.MAP_LINK_TEXT}</a>
+			</p>
+		</div>
+		<!--/* Contact Info section. Changed the way this worked, but leaving the 
+		 old way as a fallback. */-->
+		<div class="${details.CONST.SECTION_CSS_CLASS}"> 
+		 <sly data-sly-test.hasContactInfo="${properties.contactName || properties.contactEmail || properties.contactPhone}">
+			<h3>Contact Information</h3>
+			${model.contactInfo @ context='html'}
+     </sly>
+		 <sly data-sly-test="${!hasContactInfo && properties.contact}">
+		  <h3>Contact Information</h3>
+		  ${properties.contact @ context='html'}
+		 </sly>
+		</div>
+		<!--/* End Contact Info section */-->
+		<div class="${details.CONST.SECTION_CSS_CLASS}" data-sly-test="${model.attachmentLink}">
+			<sly data-sly-use.linkHelper="${'org.fhcrc.centernet.helper.LinkHelper' @ link=model.attachmentLink}" data-sly-unwrap></sly>
+			<h3>Attachment</h3>
+			<p>
+				<a href="${linkHelper.formattedLink}" target="_blank"> ${properties.attachmentTitle ? properties.attachmentTitle :
+				'DEFAULT ATTACHMENT TITLE'}</a>
+			</p>
+		</div>
+		<div class="${details.CONST.SECTION_CSS_CLASS}" data-sly-test="${properties['button/text'] && properties['button/linkUrl']}">
+			<sly data-sly-resource="${'button' @ resourceType='common/components/content/buttoncomponent', wcmmode='disabled'}" data-sly-unwrap></sly>
+		</div>
+		<sly data-sly-test="${properties.text}" data-sly-unwrap>
+			<h3>Event description</h3>
+			<sly data-sly-unwrap>${properties.text @ context='html'}</sly>
+		</sly>
+	</div>
+</sly>
