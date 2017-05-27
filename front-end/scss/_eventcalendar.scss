@@ -1,0 +1,395 @@
+// eventcalendar.scss
+
+//
+// @group fh-component-events-calendar
+//
+
+.fh-component-events-calendar {
+ 
+  .event-filters-container {
+    margin-bottom: 2rem;
+    
+    /* make the input look like a select elemnt */
+    .comiseo-daterangepicker-triggerbutton.ui-button {
+      background-color: #fff;
+      border: 1px solid rgb(202, 202, 202);
+      height: 2.4375rem;
+      padding: 8px 50px 8px 8px;
+      background-image: url(../../img/down-arrow.svg);
+      background-size: 1.7rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 0.55rem) 0.35rem;
+      color: #000;
+      margin-bottom: 1rem;
+      width: 100%;
+      vertical-align: top;
+    }
+    .comiseo-daterangepicker-triggerbutton.ui-button:hover {
+      background-image: url(../../img/down-arrow.svg);
+      background-size: 1.7rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 0.55rem) 0.35rem;
+      background-color: #fff;
+      cursor: default;
+      color: #000;
+      border: 1px solid rgb(202, 202, 202);
+    }
+    .comiseo-daterangepicker-triggerbutton.ui-button:active {
+      background-image: url(../../img/down-arrow.svg);
+      background-size: 1.7rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 0.55rem) 0.35rem;
+      background-color: #fff;
+    }
+    .comiseo-daterangepicker-active.ui-button {
+      background-image: url(../../img/down-arrow.svg);
+      background-size: 1.7rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 0.55rem) 0.35rem;
+      background-color: #fff;
+    }
+    .ui-widget-header .ui-state-default, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+      background-image: url(../../img/down-arrow.svg) !important;
+      background-size: 1.7rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 0.55rem) 0.35rem;
+      background-color: #fff !important;
+    }
+    .ui-button:focus {
+      background-image: url(../../img/down-arrow.svg) !important;
+      background-size: 1.7rem !important;
+      background-repeat: no-repeat !important;
+      background-position: calc(100% - 0.55rem) 0.35rem !important;
+      color: #000 !important;
+      background-color: #fff !important;
+      border: 1px solid rgb(202, 202, 202) !important;
+    }
+    ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight { 
+      border: 1px solid $light-gray;
+      background: $light-gray;
+      color: $hutch-navy;
+      font-family: $bold-font-family;
+    }
+
+    select {
+      background-image: none;
+      background: transparent;
+      margin-bottom: 1rem;
+    }
+    
+    .select-element {
+      background-image: url(../../img/down-arrow.svg);
+      background-size: 1.7rem;
+      background-repeat: no-repeat;
+      background-position: calc(100% - 0.55rem) 0.35rem;
+    }
+    
+    button[type=reset] {
+      font-size: 90%;
+      font-family: $bold-font-family;
+      color: $hutch-turquoise;
+      float: right;
+    }
+    
+    @include breakpoint(large) {
+      margin-bottom: 3rem;
+      text-align: center;
+      
+      div {
+        position: relative;
+        display: inline-block;
+
+        .select-element {
+          margin: 0 0.7rem 0 0;
+        }
+
+        select {        
+          display: inline-block;
+          width: auto;
+          padding-right: 50px;
+          margin-bottom: 0;
+        }
+
+        button[type=reset] {
+          font-family: $bold-font-family;
+          color: $hutch-turquoise;
+          position: absolute;
+          bottom: 0;
+          min-width: 100px;
+          text-align: left;
+          font-size: 90%;
+          margin-left: 1rem;
+          float: none;
+        }
+      }
+      
+      .comiseo-daterangepicker-triggerbutton.ui-button {
+        margin-bottom: 0;
+        width: auto;
+        margin-right: 0.7rem;
+      }
+    } 
+  }
+
+  thead {
+
+    tr {
+
+    background-color: #e9e9e9;
+
+    }
+
+  }
+
+  th {
+
+    font-family: $bold-font-family;
+    font-weight: normal;
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+    text-transform: uppercase;
+    
+    &.show-for-medium {
+      
+      width: 15%;
+      
+    }
+
+  }
+  
+  tbody {
+    
+    vertical-align: top;
+    
+    tr {
+      
+      border-bottom: 3px solid $light-gray;
+      
+      &:last-of-type {
+        
+        border-bottom: none;
+        
+      }
+      
+    }
+    
+    td {
+      
+      padding: 1.5rem 0.625rem;
+      
+    }
+    
+    tr.event-today {
+      
+      border-bottom: none;
+      
+      td {
+        
+        padding: 0;
+        
+      }
+      
+      hr {
+        
+        border-bottom: 8px solid $light-gray;
+        
+      }
+      
+    }
+    
+  }
+  
+  .event-date-container {
+    
+    text-align: right;
+    padding-right: 2rem;
+    font-family: $bold-font-family;
+    
+    br {
+      display: none; 
+    }
+
+    p {
+      display: inline-block;
+      margin-left: 0.5rem;
+      margin-bottom: 0;
+    }
+    
+    .event-time {
+      .day {
+        display: none;
+      }
+    }
+    
+    .event-time::after {
+      content: "/";
+      margin: 0 0.3rem;
+    }
+    
+    @include breakpoint(medium) {
+      font-family: $body-font-family;
+      
+      br {
+        display: block;
+      }
+      
+      p {
+        display: block;
+        margin-left: 0;
+      }
+      
+      .event-time {
+        .day {
+          display: inline;
+        }
+      }
+      
+      .event-time::after {
+        content: none;
+      }
+    }
+  }
+  
+  .event-time {
+    
+    font-family: $bold-font-family;
+    
+  }
+  
+  .event-title {
+    
+    font-size: 1.4 * $global-font-size;
+    
+  }
+  
+  .event-location-container {
+    br {
+      display: none;
+    }
+    .facet-label {
+      font-family: $bold-font-family;
+      margin-right: 0.4rem;
+    }
+    .event-location {
+      margin-right: 0.5rem;
+    }
+  }
+  
+  .event-host-container {
+    br {
+      display: none;
+    }
+    .facet-label {
+      font-family: $bold-font-family;
+      margin-right: 0.4rem;
+    }
+  }
+  
+  .event-contact-container {
+    br {
+      display: none;
+    }
+    .facet-label {
+      font-family: $bold-font-family;
+      margin-right: 0.4rem;
+    }
+    p {
+      display: inline-block;
+    }
+  }
+  
+  .event-location-container:empty, .event-host-container:empty, .event-contact-container:empty {
+    padding-bottom: 0;
+  }
+  
+  @include breakpoint(medium) {
+    .event-location-container {
+      br {
+        display: block;
+      }
+    }
+  
+    .event-host-container {
+      br {
+        display: block;
+      }
+    }
+
+    .event-contact-container {
+      br {
+        display: block;
+      }
+      p {
+        display: block;
+      }
+    }
+  }
+  
+  .event-contact-container :last-child {
+    
+    margin-bottom: 0;
+    
+  }
+  
+  .event-location-map {
+    
+    text-transform: uppercase;
+    
+  }
+  
+  .event-speaker {
+    
+    font-family: $italic-font-family;
+    font-size: .95 * $global-font-size;
+    
+  }
+  
+  .facet-label {
+    
+    font-family: $medium-font-family;
+    text-transform: uppercase;
+    
+  }
+  
+  @include breakpoint(small down) {
+    
+    tbody {
+      
+      td {
+        
+        float: left;
+        width: 100%;
+        padding-top: 0;
+        padding-bottom: .5rem;
+        padding-right: 0;
+        
+        &:first-of-type {
+          
+          padding-top: 1.3rem;
+          
+        }
+        
+        &:last-of-type {
+          
+          padding-bottom: 1.3rem;
+          
+        }
+        
+      }
+      
+    }
+    
+    .event-date-container {
+      
+      text-align: left;
+      padding-right: 0;
+      
+    }
+    
+  }
+  
+  .last-visible-row {
+    border-bottom: none;
+  }
+
+}
